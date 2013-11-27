@@ -3,8 +3,8 @@
     "description": "Russian porter stemmer",
     "minimum-stability": "stable",
     "keywords": ["russian", "stemmer"],
-    "homepage": "http://github.com/NeonXP/RussianStemmer",
-    "license": "GPLv2",
+    "homepage": "http://github.com/NeonXP/Stemmer",
+    "license": "GPLv3",
     "authors": [
         {
             "name": "Alexander 'NeonXP' Kiryukhin",
@@ -13,5 +13,8 @@
     ],
     "autoload": {
         "psr-0": {"NXP": "src/"}
+    },
+    "require": {
+        "php": ">=5.4.0"
     }
 }
