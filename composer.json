@@ -1,0 +1,17 @@
+{
+    "name": "nxp/russian-porter-stemmer",
+    "description": "Russian porter stemmer",
+    "minimum-stability": "stable",
+    "keywords": ["russian", "stemmer"],
+    "homepage": "http://github.com/NeonXP/RussianStemmer",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Alexander 'NeonXP' Kiryukhin",
+            "email": "frei@neonxp.info"
+        }
+    ],
+    "autoload": {
+        "psr-0": {"NXP": "src/"}
+    }
+}
