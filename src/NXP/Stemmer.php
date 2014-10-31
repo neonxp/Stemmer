@@ -13,20 +13,20 @@ namespace NXP;
 class Stemmer
 {
     private $vowel = "аеёиоуыэюя";
-    private $regexPerfectiveGerunds = [
+    private $regexPerfectiveGerunds = array(
         "(в|вши|вшись)$",
         "(ив|ивши|ившись|ыв|ывши|ывшись)$"
-    ];
+    );
     private $regexAdjective = "(ее|ие|ые|ое|ими|ыми|ей|ий|ый|ой|ем|им|ым|ом|его|ого|ему|ому|их|ых|ую|юю|ая|яя|ою|ею)$";
-    private $regexParticiple = [
+    private $regexParticiple = array(
         "(ем|нн|вш|ющ|щ)",
         "(ивш|ывш|ующ)"
-    ];
+    );
     private $regexReflexives = "(ся|сь)$";
-    private $regexVerb = [
+    private $regexVerb = array(
         "(ла|на|ете|йте|ли|й|л|ем|н|ло|но|ет|ют|ны|ть|ешь|нно)$",
         "(ила|ыла|ена|ейте|уйте|ите|или|ыли|ей|уй|ил|ыл|им|ым|ен|ило|ыло|ено|ят|ует|уют|ит|ыт|ены|ить|ыть|ишь|ую|ю)$"
-    ];
+    );
     private $regexNoun = "(а|ев|ов|ие|ье|е|иями|ями|ами|еи|ии|и|ией|ей|ой|ий|й|иям|ям|ием|ем|ам|ом|о|у|ах|иях|ях|ы|ь|ию|ью|ю|ия|ья|я)$";
     private $regexSuperlative = "(ейш|ейше)$";
     private $regexDerivational = "(ост|ость)$";
@@ -51,10 +51,10 @@ class Stemmer
             $this->removeEndings($this->regexReflexives, $this->RV);
             //Затем в следующем порядке пробуем удалить окончания: ADJECTIVAL, VERB, NOUN. Как только одно из них найдено – шаг завершается.
             if (!($this->removeEndings(
-                    [
+                    array(
                         $this->regexParticiple[0] . $this->regexAdjective,
                         $this->regexParticiple[1] . $this->regexAdjective
-                    ],
+                    ),
                     $this->RV
                 ) || $this->removeEndings($this->regexAdjective, $this->RV))
             ) {
@@ -86,7 +86,7 @@ class Stemmer
     public function removeEndings($regex, $region)
     {
         $prefix = mb_substr($this->word, 0, $region, 'utf8');
-        $word   = mb_substr($this->word, $region, null, 'utf8');
+        $word   = substr($this->word,strlen($prefix));
         if (is_array($regex)) {
             if (preg_match('/.+[а|я]' . $regex[0] . '/u', $word)) {
                 $this->word = $prefix . preg_replace('/' . $regex[0] . '/u', '', $word);
