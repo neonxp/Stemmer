@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "keywords": ["russian", "stemmer"],
     "homepage": "http://github.com/NeonXP/Stemmer",
-    "license": "GPLv3",
+    "license": "GPL-3.0+",
     "authors": [
         {
             "name": "Alexander 'NeonXP' Kiryukhin",
