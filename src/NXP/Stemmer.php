@@ -36,7 +36,6 @@ class Stemmer
 
     private $word = '';
     private $RV = 0;
-    private $R1 = 0;
     private $R2 = 0;
 
     public function getWordBase($word)
@@ -105,7 +104,8 @@ class Stemmer
     private function findRegions()
     {
         $state = 0;
-        for ($i = 1; $i < mb_strlen($this->word, 'utf8'); $i++) {
+        $wordLength = mb_strlen($this->word, 'utf8');
+        for ($i = 1; $i < $wordLength; $i++) {
             $prevChar = mb_substr($this->word, $i - 1, 1, 'utf8');
             $char     = mb_substr($this->word, $i, 1, 'utf8');
             switch ($state) {
@@ -117,7 +117,6 @@ class Stemmer
                     break;
                 case 1:
                     if ($this->isVowel($prevChar) && !$this->isVowel($char)) {
-                        $this->R1 = $i + 1;
                         $state    = 2;
                     }
                     break;
