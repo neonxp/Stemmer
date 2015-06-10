@@ -2,6 +2,7 @@
     "name": "nxp/russian-porter-stemmer",
     "description": "Russian porter stemmer",
     "minimum-stability": "stable",
+    "version": "1.0.0",
     "keywords": ["russian", "stemmer"],
     "homepage": "http://github.com/NeonXP/Stemmer",
     "license": "GPL-3.0+",
