@@ -1,5 +1,6 @@
 <?php
 
+ini_set('memory_limit', '512M');
 $vendorDir = __DIR__ . '/../../..';
 
 if (file_exists($file = $vendorDir . '/autoload.php')) {
