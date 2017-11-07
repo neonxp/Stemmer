@@ -12,12 +12,19 @@ namespace NXP;
 
 class StemmerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testStemming()
+    public function testStemmingDataProvider()
     {
-        $stemmer   = new Stemmer();
-        $testWords = require("dict.php");
-        foreach ($testWords as $word => $base) {
-            $this->assertEquals($base, $stemmer->getWordBase($word));
-        }
+        return require("dict.php");
+    }
+
+    /**
+     * @dataProvider testStemmingDataProvider
+     *
+     * @param string $word
+     * @param string $expected
+     */
+    public function testStemming($word, $expected)
+    {
+        $this->assertEquals($expected, Stemmer::getWordBase($word));
     }
 }
