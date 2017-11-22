@@ -92,17 +92,17 @@ class Stemmer
      */
     public static function removeEndings(&$word, $regex, $region)
     {
-        $prefix = mb_substr($word, 0, $region, 'utf8');
+        $prefix = mb_substr($word, 0, $region, 'UTF-8');
         $ending = substr($word, strlen($prefix));
         if (is_array($regex)) {
-            if (preg_match('/.+[а|я]' . $regex[0] . '/u', $ending)) {
-                $word = $prefix . preg_replace('/' . $regex[0] . '/u', '', $ending);
+            if (preg_match('/.+[а|я]' . $regex[0] . '/ui', $ending)) {
+                $word = $prefix . preg_replace('/' . $regex[0] . '/ui', '', $ending);
                 return true;
             }
             $regex = $regex[1];
         }
-        if (preg_match('/.+' . $regex . '/u', $ending)) {
-            $word = $prefix . preg_replace('/' . $regex . '/u', '', $ending);
+        if (preg_match('/.+' . $regex . '/ui', $ending)) {
+            $word = $prefix . preg_replace('/' . $regex . '/ui', '', $ending);
             return true;
         }
 
@@ -118,10 +118,10 @@ class Stemmer
     {
         $rv = 0;
         $state = 0;
-        $wordLength = mb_strlen($word, 'utf8');
+        $wordLength = mb_strlen($word, 'UTF-8');
         for ($i = 1; $i < $wordLength; $i++) {
-            $prevChar = mb_substr($word, $i - 1, 1, 'utf8');
-            $char = mb_substr($word, $i, 1, 'utf8');
+            $prevChar = mb_substr($word, $i - 1, 1, 'UTF-8');
+            $char = mb_substr($word, $i, 1, 'UTF-8');
             switch ($state) {
                 case 0:
                     if (self::isVowel($char)) {
@@ -152,6 +152,6 @@ class Stemmer
      */
     private static function isVowel($char)
     {
-        return strpos(self::VOWEL, $char) !== false;
+        return mb_stripos(self::VOWEL, $char, 0, 'UTF-8') !== false;
     }
 }
