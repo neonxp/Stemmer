@@ -95,7 +95,7 @@ class Stemmer
         $prefix = mb_substr($word, 0, $region, 'UTF-8');
         $ending = mb_substr($word, mb_strlen($prefix, 'UTF-8'), null, 'UTF-8');
         if (is_array($regex)) {
-            if (preg_match('/.+[а|я]' . $regex[0] . '/ui', $ending)) {
+            if (preg_match('/.+[ая]' . $regex[0] . '/ui', $ending)) {
                 $word = $prefix . preg_replace('/' . $regex[0] . '/ui', '', $ending);
                 return true;
             }
